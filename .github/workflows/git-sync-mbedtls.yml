@@ -1,0 +1,33 @@
+# Copyright (c) 2021-2025 TiaC Systems
+# Copyright (c) 2025 Swarovski Optik
+# SPDX-License-Identifier: Unlicense
+
+name: Sync mbedtls
+
+on:
+  schedule: # At minute 10 past every 4th hour.
+    - cron: '10 */4 * * *'
+  workflow_dispatch: # And manually on button click.
+
+jobs:
+  git-sync:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        repo:
+          - mbedtls
+        branch:
+          - zephyr
+          - "refs/tags/*"
+
+    steps:
+      - name: git-sync-mbedtls
+        uses: swarovskioptik-zephyrproject-rtos/git-sync@v3
+        with:
+          source_repo: "git@github.com:zephyrproject-rtos/${{ matrix.repo }}.git"
+          source_branch: "${{ matrix.branch }}"
+          destination_repo: "git@github.com:swarovskioptik-zephyrproject-rtos/${{ matrix.repo }}.git"
+          destination_branch: "${{ matrix.branch }}"
+          ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY_DEVOPS_SOA_CI }}
+        if: ${{ matrix.repo == 'mbedtls' }}
