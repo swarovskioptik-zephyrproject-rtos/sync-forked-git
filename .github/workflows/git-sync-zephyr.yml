@@ -43,7 +43,6 @@ jobs:
           - zephyr
         branch:
           - main
-          - v4.2-branch
 
     steps:
       - name: git-rebase-zephyr
