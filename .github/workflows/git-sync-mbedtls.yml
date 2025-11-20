@@ -18,7 +18,7 @@ jobs:
         repo:
           - mbedtls
         branch:
-          - zephyr
+          - zephyr_mbedtls_v3.6.5
           - "refs/tags/*"
 
     steps:
