@@ -30,4 +30,4 @@ jobs:
           destination_repo: "git@github.com:swarovskioptik-zephyrproject-rtos/${{ matrix.repo }}.git"
           destination_branch: "${{ matrix.branch }}"
           ssh_private_key: ${{ secrets.SSH_PRIVATE_KEY_DEVOPS_SOA_CI }}
-        if: ${{ matrix.repo == 'hal_silabs' }}
+        if: ${{ matrix.repo == 'mcuboot' }}
