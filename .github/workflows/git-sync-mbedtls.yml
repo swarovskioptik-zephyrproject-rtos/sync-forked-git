@@ -18,6 +18,7 @@ jobs:
         repo:
           - mbedtls
         branch:
+          - zephyr_mbedtls_v4.1.0
           - zephyr_mbedtls_v3.6.6
           - "refs/tags/*"
 
